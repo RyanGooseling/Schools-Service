@@ -1,7 +1,8 @@
 const schoolsController = {};
 
 schoolsController.get = (req, res) => {
-  console.log('hi');
+  console.log('GET controller accessed');
+  console.log(req.params.id);
   res.end();
 };
 
