@@ -13,12 +13,13 @@ let i = 1;
 while (i < 101) {
   const thisData = {};
   const rating = {};
+  const schoolRando = Math.floor(Math.random() * 134);
   const typeRando = Math.floor(Math.random() * 2);
   const gradeRando = Math.floor(Math.random() * 4);
   const choiceRando = Math.floor(Math.random() * 2);
 
   thisData.property_id = i;
-  thisData.name = schools[i];
+  thisData.name = schools[schoolRando];
   thisData.type = type[typeRando];
   thisData.grades = grades[gradeRando];
 
