@@ -3,6 +3,7 @@ const schoolModel = require('../../database/School.js');
 const schoolsController = {};
 
 schoolsController.get = (req, res) => {
+  console.log(req.params.id);
   schoolModel.find({ property_id: Number(req.params.id) }).sort({ distance: 1 }).limit(3)
     .then((schools) => {
       res.json(schools);
