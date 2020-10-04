@@ -11,11 +11,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       schools: [],
-      showModal: false,
+      modalState: false,
     };
 
     this.modalHandlerShow = this.modalHandlerShow.bind(this);
     this.modalHandlerHide = this.modalHandlerHide.bind(this);
+    // this.handleModalSchool = this.handleModalSchool.bind(this);
   }
 
   componentDidMount() {
@@ -33,22 +34,27 @@ class App extends React.Component {
   }
 
   modalHandlerShow() {
-    console.log('show modal');
     this.setState({
-      showModal: true,
+      modalState: true,
     });
   }
 
   modalHandlerHide() {
-    console.log('show modal');
     this.setState({
-      showModal: false,
+      modalState: false,
     });
   }
 
+  // handleModalSchool() {
+  //   this.setState({
+
+  //   });
+  // }
+
   render() {
     return (
-      <Schools schools={this.state.schools} modalHandlerShow={this.modalHandlerShow} modalHandlerHide={this.modalHandlerHide} showModal={this.state.showModal} />
+      // <Schools schools={this.state.schools} modalHandlerShow={this.modalHandlerShow} modalHandlerHide={this.modalHandlerHide} modalState={this.state.modalState} />
+      <Schools schools={this.state.schools} modalState={this.state.modalState} />
     );
   }
 }
