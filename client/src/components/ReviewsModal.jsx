@@ -4,6 +4,9 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import moment from 'moment';
+import Helpers from './Helpers';
+import ReviewItem from './ReviewItem.jsx';
 
 class ReviewsModal extends React.Component {
   constructor(props) {
@@ -36,61 +39,65 @@ class ReviewsModal extends React.Component {
                 <div className="school-rating-and-title">
                   <div className="ellipse">
                     <span className="rating-text">
-                      <span className="rating-num-modal">6</span>
+                      <span className="rating-num-modal">{Helpers.computeRating(this.props.school.rating)}</span>
                       <span className="out-of">/10</span>
                     </span>
                     <span className="school-name-modal">{this.props.school.name}</span>
                   </div>
                 </div>
                 <div className="school-address">
-                  846 Corona St, Denver, CO 80218
+                  {this.props.school.address}
                 </div>
                 <div className="sub-info font-size-small">
-                  Public • 6 to 8 • 280 students
+                  {this.props.school.type} • {this.props.school.grades} • {this.props.school.studentCount} students
                 </div>
                 <div className="star-rating-modal">
-                  <img src="./assets/threeStar.png" alt="" />
+                  <img src={Helpers.starPath(this.props.school.reviews)} alt="" />
                   <div className="num-reviews-modal">
-                    27 reviews
+                    {this.props.school.reviews.length} reviews
                   </div>
                 </div>
               </div>
               <div className="school-address">
-                <div>15 students / teachers</div>
-                <div><a href="google.com">Morey Middle School</a></div>
-                <div><a href="google.com">Denver Country School District</a></div>
+                <div>{this.props.school.ratio} Students/Teachers</div>
+                <div><a href={this.props.school.schoolUrl} target="_blank" rel="noreferrer">{this.props.school.name}</a></div>
+                <div><a href={this.props.school.districtUrl} target="_blank" rel="noreferrer">{this.props.school.name} School District</a></div>
               </div>
               <div className="great-schools-section">
                 <h4>GreatSchools Rating</h4>
                 <div className="subrating-row">
                   <span className="subrating-score">
-                    <span className="subrating-value">4</span>
+                    <span className="subrating-value">{this.props.school.rating.lowIncome}</span>
                     <span className="out-of">/10</span>
                   </span>
                   <span className="subrating-type">Low Income</span>
                 </div>
                 <div className="subrating-row">
                   <span className="subrating-score">
-                    <span className="subrating-value">3</span>
+                    <span className="subrating-value">{this.props.school.rating.studentGrowth}</span>
                     <span className="out-of">/10</span>
                   </span>
                   <span className="subrating-type">Student Growth</span>
                 </div>
                 <div className="subrating-row">
                   <span className="subrating-score">
-                    <span className="subrating-value">10</span>
+                    <span className="subrating-value">{this.props.school.rating.testScores}</span>
                     <span className="out-of">/10</span>
                   </span>
                   <span className="subrating-type">Test Scores</span>
                 </div>
                 <div className="subrating-row">
                   <span className="subrating-score">
-                    <span className="subrating-value">8</span>
+                    <span className="subrating-value">{this.props.school.rating.equity}</span>
                     <span className="out-of">/10</span>
                   </span>
                   <span className="subrating-type">Equity</span>
                 </div>
-                <div className="last-updated">Last Updated: Sep 22, 2020</div>
+                <div className="last-updated">Last Updated: {moment(this.props.school.rating.lastUpdated).format('ll')}</div>
+              </div>
+              <div className="reviews">
+                <h4>Community Reviews ({this.props.school.reviews.length})</h4>
+                {this.props.school.reviews.map((review, index) => <ReviewItem review={review} id={index} />)}
               </div>
             </div>
           </div>
