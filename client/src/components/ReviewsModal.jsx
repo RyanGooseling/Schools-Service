@@ -58,7 +58,7 @@ class ReviewsModal extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="school-address">
+              <div className="ratio">
                 <div>{this.props.school.ratio} Students/Teachers</div>
                 <div><a href={this.props.school.schoolUrl} target="_blank" rel="noreferrer">{this.props.school.name}</a></div>
                 <div><a href={this.props.school.districtUrl} target="_blank" rel="noreferrer">{this.props.school.name} School District</a></div>
