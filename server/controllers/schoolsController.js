@@ -24,7 +24,7 @@ schoolsController.post = (req, res) => {
       res.end();
     })
     .catch((err) => {
-      console.log(`Error creating new review:`)
+      console.log(`Error creating new review:`);
       console.log(err);
     });
 };

@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/prop-types */
 /* eslint-disable object-curly-spacing */
 import React from 'react';
 import axios from 'axios';
@@ -23,16 +26,19 @@ class NewReview extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const {stars, body} = this.state;
-    const {school, refreshSchools, refreshReviews} = this.props;
-    axios.post('/homes/5/schools/reviews', {
+    const {
+      school,
+      refreshSchools,
+      refreshReviews,
+    } = this.props;
+    axios.post(`/homes/${school.property_id}/schools/reviews`, {
       id: school._id,
       score: Number(stars),
       body,
     })
       .then(() => {
-        axios.get('/homes/5/schools')
+        axios.get(`/homes/${school.property_id}/schools`)
           .then((schools) => {
-            console.log('Schools Refreshed');
             refreshSchools(schools);
             refreshReviews();
           })
@@ -41,18 +47,10 @@ class NewReview extends React.Component {
           });
       })
       .catch((err) => {
-        console.log(`POST error`);
+        console.log('POST error');
         console.log(err);
       });
-    // also need to re-render the sub-body sections
   }
-
-// after successful POST
-  // need to GET new schools from the api (make direct axios request)
-    // then Update the schools page state with schools state
-      // then
-  //
-
 
   render() {
     const {stars, body} = this.state;
