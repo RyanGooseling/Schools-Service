@@ -8,7 +8,7 @@ schoolsController.get = (req, res) => {
       res.json(schools);
     })
     .catch((err) => {
-      console.log('error');
+      console.log('Error in controller GET');
       res.json(err);
     });
 };

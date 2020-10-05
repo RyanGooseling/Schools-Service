@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-else-return */
+/* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 // import React from 'react';
 // import SchoolItem from './SchoolItem.jsx';
@@ -31,6 +34,7 @@ class Schools extends React.Component {
     };
 
     this.refreshSchools = this.refreshSchools.bind(this);
+    this.checkForSchools = this.checkForSchools.bind(this);
   }
 
   componentDidMount() {
@@ -51,11 +55,22 @@ class Schools extends React.Component {
     });
   }
 
+  checkForSchools(schoolList) {
+    if (!Array.isArray(schoolList) || schoolList.length === 0) {
+      return <h3>No Schools found</h3>;
+    } else {
+      return (
+        <div className="schools-table">
+          {this.state.schools.map((school) => <SchoolItem school={school} key={school._id} refreshSchools={this.refreshSchools} />)}
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
-      <div className="schools-table">
-        {this.state.schools.map((school) => <SchoolItem school={school} key={school._id} refreshSchools={this.refreshSchools} />)}
-      </div>
+      this.checkForSchools(this.state.schools)
+
     );
   }
 }
