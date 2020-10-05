@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -19,6 +20,7 @@ class ReviewsModal extends React.Component {
 
     this.showHideClassName = this.showHideClassName.bind(this);
     this.changeView = this.changeView.bind(this);
+    this.refreshReviews = this.refreshReviews.bind(this);
   }
 
   showHideClassName() {
@@ -28,6 +30,12 @@ class ReviewsModal extends React.Component {
   changeView(option) {
     this.setState({
       view: option,
+    });
+  }
+
+  refreshReviews() {
+    this.setState({
+      view: 'reviews',
     });
   }
 
@@ -41,8 +49,8 @@ class ReviewsModal extends React.Component {
         </div>
       )
     } else if (this.state.view === 'new-review') {
-        return <NewReview />;
-      }
+      return <NewReview school={this.props.school} refreshSchools={this.props.refreshSchools} refreshReviews={this.refreshReviews} />;
+    }
   }
 
   render() {

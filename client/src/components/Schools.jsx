@@ -5,7 +5,7 @@ import SchoolItem from './SchoolItem.jsx';
 const Schools = (props) => {
   return (
     <div className="schools-table">
-      {props.schools.map((school) => <SchoolItem school={school} key={school._id} />)}
+      {props.schools.map((school) => <SchoolItem school={school} key={school._id} refreshSchools={props.refreshSchools}/>)}
     </div>
   );
 };

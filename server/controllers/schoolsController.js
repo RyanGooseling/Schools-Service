@@ -14,14 +14,14 @@ schoolsController.get = (req, res) => {
 };
 
 schoolsController.post = (req, res) => {
-  console.log('triggered POST controller');
+  console.log(`triggered POST controller ${req.body.id}`);
   schoolModel.findOneAndUpdate(
-    { property_id: Number(req.params.id) },
+    { _id: req.body.id },
     { $push: { reviews: { score: Number(req.body.score), body: req.body.body, createdAt: new Date().toISOString() } } },
   )
     .then(() => {
       console.log('Successfully added review');
-      res.end('Posted');
+      res.end();
     })
     .catch((err) => {
       console.log(`Error creating new review:`)

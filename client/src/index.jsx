@@ -12,6 +12,8 @@ class App extends React.Component {
     this.state = {
       schools: [],
     };
+
+    this.refreshSchools = this.refreshSchools.bind(this);
   }
 
   componentDidMount() {
@@ -26,9 +28,15 @@ class App extends React.Component {
       });
   }
 
+  refreshSchools(newSchools) {
+    this.setState({
+      schools: newSchools.data,
+    });
+  }
+
   render() {
     return (
-      <Schools schools={this.state.schools} />
+      <Schools schools={this.state.schools} refreshSchools={this.refreshSchools} />
     );
   }
 }

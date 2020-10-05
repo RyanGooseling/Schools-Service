@@ -74,7 +74,7 @@ class SchoolItem extends React.Component {
             <div className="sub-info font-size-small">Distance</div>
           </td>
         </tr>
-        <ReviewsModal modalState={this.state.modal} modalHandlerHide={this.modalHandlerHide} school={this.props.school} />
+        <ReviewsModal modalState={this.state.modal} modalHandlerHide={this.modalHandlerHide} school={this.props.school} refreshSchools={this.props.refreshSchools} />
       </div>
     );
   }
