@@ -4,10 +4,11 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Helpers from './Helpers';
+import TopInfoModalSection from './TopInfoModalSection.jsx'
 import RatioModalSection from './RatioModalSection.jsx'
 import GreatSchoolsModalSection from './GreatSchoolsModalSection.jsx'
 import ReviewsModalSection from './ReviewsModalSection.jsx'
+import NewReview from './NewReview.jsx'
 
 class ReviewsModal extends React.Component {
   constructor(props) {
@@ -38,9 +39,10 @@ class ReviewsModal extends React.Component {
           <GreatSchoolsModalSection school={this.props.school} />
           <ReviewsModalSection school={this.props.school} changeView={this.changeView} />
         </div>
-
-      );
-    }
+      )
+    } else if (this.state.view === 'new-review') {
+        return <NewReview />;
+      }
   }
 
   render() {
@@ -50,29 +52,7 @@ class ReviewsModal extends React.Component {
           <img src="./assets/close.png" alt="" className="closeModal" onClick={this.props.modalHandlerHide} />
           <div className="modal-wrapper">
             <div className="content">
-              <div className="school-info-content">
-                <div className="school-rating-and-title">
-                  <div className="ellipse">
-                    <span className="rating-text">
-                      <span className="rating-num-modal">{Helpers.computeRating(this.props.school.rating)}</span>
-                      <span className="out-of">/10</span>
-                    </span>
-                    <span className="school-name-modal">{this.props.school.name}</span>
-                  </div>
-                </div>
-                <div className="school-address">
-                  {this.props.school.address}
-                </div>
-                <div className="sub-info font-size-small">
-                  {this.props.school.type} • {this.props.school.grades} • {this.props.school.studentCount} students
-                </div>
-                <div className="star-rating-modal">
-                  <img src={Helpers.starPath(this.props.school.reviews)} alt="" />
-                  <div className="num-reviews-modal">
-                    {this.props.school.reviews.length} reviews
-                  </div>
-                </div>
-              </div>
+              <TopInfoModalSection school={this.props.school} />
               {this.renderView()}
             </div>
           </div>
