@@ -4,32 +4,47 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import moment from 'moment';
 import Helpers from './Helpers';
-import ReviewItem from './ReviewItem.jsx';
+import RatioModalSection from './RatioModalSection.jsx'
+import GreatSchoolsModalSection from './GreatSchoolsModalSection.jsx'
+import ReviewsModalSection from './ReviewsModalSection.jsx'
 
 class ReviewsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      school: this.props.school,
+      view: 'reviews',
     };
 
     this.showHideClassName = this.showHideClassName.bind(this);
-    this.showState = this.showState.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
 
   showHideClassName() {
     return this.props.modalState ? 'modal display-block' : 'modal display-none';
   }
 
-  showState() {
-    console.log(this.state.school);
+  changeView(option) {
+    this.setState({
+      view: option,
+    });
+  }
+
+  renderView() {
+    if (this.state.view === 'reviews') {
+      return (
+        <div className="sub-body">
+          <RatioModalSection school={this.props.school} />
+          <GreatSchoolsModalSection school={this.props.school} />
+          <ReviewsModalSection school={this.props.school} changeView={this.changeView} />
+        </div>
+
+      );
+    }
   }
 
   render() {
     return (
-
       <div className={this.showHideClassName()}>
         <section className="modal-main">
           <img src="./assets/close.png" alt="" className="closeModal" onClick={this.props.modalHandlerHide} />
@@ -58,47 +73,7 @@ class ReviewsModal extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="ratio">
-                <div>{this.props.school.ratio} Students/Teachers</div>
-                <div><a href={this.props.school.schoolUrl} target="_blank" rel="noreferrer">{this.props.school.name}</a></div>
-                <div><a href={this.props.school.districtUrl} target="_blank" rel="noreferrer">{this.props.school.name} School District</a></div>
-              </div>
-              <div className="great-schools-section">
-                <h4>GreatSchools Rating</h4>
-                <div className="subrating-row">
-                  <span className="subrating-score">
-                    <span className="subrating-value">{this.props.school.rating.lowIncome}</span>
-                    <span className="out-of">/10</span>
-                  </span>
-                  <span className="subrating-type">Low Income</span>
-                </div>
-                <div className="subrating-row">
-                  <span className="subrating-score">
-                    <span className="subrating-value">{this.props.school.rating.studentGrowth}</span>
-                    <span className="out-of">/10</span>
-                  </span>
-                  <span className="subrating-type">Student Growth</span>
-                </div>
-                <div className="subrating-row">
-                  <span className="subrating-score">
-                    <span className="subrating-value">{this.props.school.rating.testScores}</span>
-                    <span className="out-of">/10</span>
-                  </span>
-                  <span className="subrating-type">Test Scores</span>
-                </div>
-                <div className="subrating-row">
-                  <span className="subrating-score">
-                    <span className="subrating-value">{this.props.school.rating.equity}</span>
-                    <span className="out-of">/10</span>
-                  </span>
-                  <span className="subrating-type">Equity</span>
-                </div>
-                <div className="last-updated">Last Updated: {moment(this.props.school.rating.lastUpdated).format('ll')}</div>
-              </div>
-              <div className="reviews">
-                <h4>Community Reviews ({this.props.school.reviews.length})</h4>
-                {this.props.school.reviews.map((review, index) => <ReviewItem review={review} id={index} />)}
-              </div>
+              {this.renderView()}
             </div>
           </div>
         </section>
@@ -108,3 +83,16 @@ class ReviewsModal extends React.Component {
 }
 
 export default ReviewsModal;
+
+
+// set a state of `view` initialized to 'reviews'
+
+// create a `changeView` method that sets state.view to a passed in `option` parameter.
+
+// based on what this.state.view is
+  // create renderView() method that returns an instance of the desired class
+  // could also put an api call here, then return the instance
+
+// inside the render
+  // create the element you want triggering the view change
+  // set the onClick for the element and pass in the proper argument. wrap this in an anonymous function
