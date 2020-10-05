@@ -21,6 +21,7 @@ class NewReview extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('write axios call here');
+    // also need to re-render the sub-body sections
   }
 
   render() {

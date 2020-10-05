@@ -3,7 +3,6 @@ const schoolModel = require('../../database/School.js');
 const schoolsController = {};
 
 schoolsController.get = (req, res) => {
-  console.log(req.params.id);
   schoolModel.find({ property_id: Number(req.params.id) }).sort({ distance: 1 }).limit(3)
     .then((schools) => {
       res.json(schools);
@@ -11,6 +10,22 @@ schoolsController.get = (req, res) => {
     .catch((err) => {
       console.log('error');
       res.json(err);
+    });
+};
+
+schoolsController.post = (req, res) => {
+  console.log('triggered POST controller');
+  schoolModel.findOneAndUpdate(
+    { property_id: Number(req.params.id) },
+    { $push: { reviews: { score: Number(req.body.score), body: req.body.body, createdAt: new Date().toISOString() } } },
+  )
+    .then(() => {
+      console.log('Successfully added review');
+      res.end('Posted');
+    })
+    .catch((err) => {
+      console.log(`Error creating new review:`)
+      console.log(err);
     });
 };
 
