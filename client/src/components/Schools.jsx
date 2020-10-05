@@ -1,24 +1,6 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-else-return */
-/* eslint-disable max-len */
-/* eslint-disable react/destructuring-assignment */
-// import React from 'react';
-// import SchoolItem from './SchoolItem.jsx';
-
-// const Schools = (props) => {
-//   return (
-//     <div className="schools-table">
-//       {props.schools.map((school) => <SchoolItem school={school} key={school._id} refreshSchools={props.refreshSchools}/>)}
-//     </div>
-//   );
-// };
-
-// export default Schools;
-
-
-
-
-
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
