@@ -1,11 +1,15 @@
 const express = require('express');
 const path = require('path');
+
 const schoolsRouter = require('./routers/schools.js');
 
 const app = express();
-// const PORT = 3002;
+
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+// app.use('/homes/:id/schools', express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use('/homes', schoolsRouter);
 
 let server;
