@@ -8,52 +8,57 @@ const choiceSchools = ['Choice school', 'Serves this home'];
 
 const data = [];
 
-let i = 1;
+let k = 0;
+while (k < 10) {
+  let i = 1;
+  while (i < 101) {
+    const thisData = {};
+    const rating = {};
+    const schoolRando = Math.floor(Math.random() * 134);
+    const typeRando = Math.floor(Math.random() * 2);
+    const gradeRando = Math.floor(Math.random() * 4);
+    const choiceRando = Math.floor(Math.random() * 2);
 
-while (i < 101) {
-  const thisData = {};
-  const rating = {};
-  const schoolRando = Math.floor(Math.random() * 134);
-  const typeRando = Math.floor(Math.random() * 2);
-  const gradeRando = Math.floor(Math.random() * 4);
-  const choiceRando = Math.floor(Math.random() * 2);
+    thisData.property_id = i;
+    thisData.name = schools[schoolRando];
+    thisData.type = type[typeRando];
+    thisData.grades = grades[gradeRando];
 
-  thisData.property_id = i;
-  thisData.name = schools[schoolRando];
-  thisData.type = type[typeRando];
-  thisData.grades = grades[gradeRando];
+    rating.lowIncome = Math.floor(Math.random() * 10 + 1);
+    rating.studentGrowth = Math.floor(Math.random() * 10 + 1);
+    rating.testScores = Math.floor(Math.random() * 10 + 1);
+    rating.equity = Math.floor(Math.random() * 10 + 1);
+    rating.lastUpdated = faker.date.between('2015-01-01', '2020-10-11');
+    thisData.rating = rating;
 
-  rating.lowIncome = Math.floor(Math.random() * 10 + 1);
-  rating.studentGrowth = Math.floor(Math.random() * 10 + 1);
-  rating.testScores = Math.floor(Math.random() * 10 + 1);
-  rating.equity = Math.floor(Math.random() * 10 + 1);
-  rating.lastUpdated = faker.date.between('2015-01-01', '2020-10-11');
-  thisData.rating = rating;
+    thisData.studentCount = Math.floor(Math.random() * 500 + 50);
+    thisData.distance = Number((Math.random() * 10).toFixed(1));
+    thisData.choiceSchool = choiceSchools[choiceRando];
+    thisData.address = `${faker.address.streetAddress()}, ${faker.address.city()} ${faker.address.stateAbbr()}, ${faker.address.zipCode()}`;
 
-  thisData.studentCount = Math.floor(Math.random() * 500 + 50);
-  thisData.distance = Number((Math.random() * 10).toFixed(1));
-  thisData.choiceSchool = choiceSchools[choiceRando];
-  thisData.address = `${faker.address.streetAddress()}, ${faker.address.city()} ${faker.address.stateAbbr()}, ${faker.address.zipCode()}`;
+    thisData.schoolUrl = 'https://high.cusd1.com/';
+    thisData.districtUrl = 'https://www.cusd1.com/';
+    thisData.ratio = Math.floor(Math.random() * 40 + 1);
 
-  thisData.schoolUrl = 'https://high.cusd1.com/';
-  thisData.districtUrl = 'https://www.cusd1.com/';
-  thisData.ratio = Math.floor(Math.random() * 40 + 1);
+    thisData.reviews = [];
 
-  thisData.reviews = [];
+    let j = Math.random() * 5 + 5;
 
-  let j = 0;
+    while (j < 15) {
+      const review = {};
+      review.score = Math.floor(Math.random() * 6);
+      review.body = faker.lorem.sentences();
+      review.createdAt = faker.date.between('2015-01-01', '2020-10-11');
+      thisData.reviews.push(review);
+      j += 1;
+    }
 
-  while (j < 10) {
-    const review = {};
-    review.score = Math.floor(Math.random() * 6);
-    review.body = faker.lorem.sentences();
-    review.createdAt = faker.date.between('2015-01-01', '2020-10-11');
-    thisData.reviews.push(review);
-    j += 1;
+    data.push(thisData);
+    i += 1;
   }
-
-  data.push(thisData);
-  i += 1;
+ k += 1;
 }
+
+// at the end of this script, I will have 100 properties, each with one school that has 10 reviews
 
 module.exports = data;
