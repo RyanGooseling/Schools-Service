@@ -1,16 +1,19 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 
 const schoolsRouter = require('./routers/schools.js');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 
 // app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use('/homes/:id/', express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use('/homes', schoolsRouter);
+app.use('/bundle.js', express.static(path.join(__dirname, '..', 'client', 'dist', 'bundle.js')));
 
 let server;
 
