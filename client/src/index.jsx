@@ -13,4 +13,6 @@ const App = () => (
   </Router>
 );
 
+window.Schools = App;
+
 ReactDOM.render(<App />, document.getElementById('schools'));
