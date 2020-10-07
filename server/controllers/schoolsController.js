@@ -8,7 +8,7 @@ schoolsController.get = (req, res) => {
       res.json(schools);
     })
     .catch((err) => {
-      console.log('error');
+      console.log('Error in controller GET');
       res.json(err);
     });
 };
@@ -24,7 +24,7 @@ schoolsController.post = (req, res) => {
       res.end();
     })
     .catch((err) => {
-      console.log(`Error creating new review:`)
+      console.log(`Error creating new review:`);
       console.log(err);
     });
 };

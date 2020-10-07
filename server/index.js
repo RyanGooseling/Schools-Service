@@ -8,8 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
-// app.use('/homes/:id/schools', express.static(path.join(__dirname, '..', 'client', 'dist')));
+// app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use('/homes/:id/', express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use('/homes', schoolsRouter);
 
 let server;
