@@ -6,13 +6,13 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Schools from './components/Schools.jsx';
 
-const App = () => (
+const SchoolService = () => (
   <Router>
     <h2>Schools</h2>
     <Route path="/homes/:id" component={Schools} />
   </Router>
 );
 
-window.Schools = App;
+// window.SchoolsService = SchoolService;
 
-ReactDOM.render(<App />, document.getElementById('schools'));
+ReactDOM.render(<SchoolService />, document.getElementById('schools'));

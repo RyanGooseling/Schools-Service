@@ -31,7 +31,7 @@ class NewReview extends React.Component {
       refreshSchools,
       refreshReviews,
     } = this.props;
-    axios.post(`/homes/${school.property_id}/schools/reviews`, {
+    axios.post(`http://localhost:3002/homes/${school.property_id}/schools/reviews`, {
       id: school._id,
       score: Number(stars),
       body,
