@@ -33,22 +33,22 @@ h2 {
   font-size: .75rem;
 }
 
-.schools-table-row {
+/* .schools-table-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: none;
   border-bottom: none;
-}
+} */
 
-.schools-table-row td {
+/* .schools-table-row td {
   padding: 12px 0 12px 0;
-}
+} */
 
-.rating-and-name-col {
+/* .rating-and-name-col {
   display: inherit;
   max-width: 350px;
-}
+} */
 
 .rating-col {
   padding-right: 1rem;
