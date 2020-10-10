@@ -26,7 +26,7 @@ const ReviewsModalSection = ({school, changeView}) => {
     <div className="reviews">
       <h4>Community Reviews ({reviews.length})</h4>
       {reviews.map((review, index) => <ReviewItem review={review} key={index} />)}
-      <NewReview onClick={() => {changeView('new-review')}}>Add new review</NewReview>
+      <NewReview onClick={() => { changeView('new-review'); }}>Add new review</NewReview>
     </div>
   );
 };

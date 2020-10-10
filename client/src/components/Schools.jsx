@@ -60,6 +60,3 @@ class Schools extends React.Component {
 // window.Schools = Schools;
 
 export default Schools;
-
-
-// make sure any api call in the service -> client should use absolute routes

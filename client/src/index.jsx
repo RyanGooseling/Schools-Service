@@ -30,6 +30,4 @@ const SchoolService = () => (
   </Font>
 );
 
-// window.SchoolsService = SchoolService;
-
 ReactDOM.render(<SchoolService />, document.getElementById('schools'));
