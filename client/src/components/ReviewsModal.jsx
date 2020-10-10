@@ -13,20 +13,6 @@ import GreatSchoolsModalSection from './GreatSchoolsModalSection.jsx';
 import ReviewsModalSection from './ReviewsModalSection.jsx';
 import NewReview from './NewReview.jsx';
 
-const ModalShow = styled.div`
-position: fixed;
-top: 0;
-left: 0;
-width:100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.2);
-display: block;
-`;
-
-const ModalHide = styled(ModalShow)`
-  display: none;
-`;
-
 const ModalDisplay = styled.div`
   position: fixed;
   top: 0;
@@ -36,6 +22,45 @@ const ModalDisplay = styled.div`
   background: rgba(0, 0, 0, 0.2);
   display: ${(props) => props.visibility};
 `;
+
+const ModalMain = styled.section`
+  position:fixed;
+  background: white;
+  width: 560px;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  display: block !important;
+`;
+
+const CloseModal = styled.img`
+  float: right;
+  width: 20px;
+  padding-right: 21px;
+  padding-top: 20px;
+`;
+
+const ModalWrapper = styled.div`
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  text-align: left;
+  padding: 0 24px 24px 24px;
+  overflow-y: initial !important;
+`;
+
+const ModalContent = styled.div`
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 35em;
+  overflow-y: auto;
+`;
+
 
 class ReviewsModal extends React.Component {
   constructor(props) {
@@ -79,15 +104,15 @@ class ReviewsModal extends React.Component {
     const toggle = this.props.modalState;
     return (
       <ModalDisplay visibility={toggle ? 'block' : 'none'}>
-        <section className="modal-main">
-          <img src="http://localhost:3002/assets/close.png" alt="" className="closeModal" onClick={this.props.modalHandlerHide} />
-          <div className="modal-wrapper">
-            <div className="content">
+        <ModalMain>
+          <CloseModal src="http://localhost:3002/assets/close.png" alt="" onClick={this.props.modalHandlerHide} />
+          <ModalWrapper>
+            <ModalContent>
               <TopInfoModalSection school={this.props.school} />
               {this.renderView()}
-            </div>
-          </div>
-        </section>
+            </ModalContent>
+          </ModalWrapper>
+        </ModalMain>
       </ModalDisplay>
     );
   }

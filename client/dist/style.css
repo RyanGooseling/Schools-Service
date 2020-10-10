@@ -3,10 +3,10 @@
   src: url(./assets/LibreFranklin-Regular.ttf);
 }
 
-body {
+/* body {
   font-family: libreFranklin;
   color: #333;
-}
+} */
 
 h2 {
   padding-left: 0;
@@ -50,9 +50,9 @@ h2 {
   max-width: 350px;
 } */
 
-.rating-col {
+/* .rating-col {
   padding-right: 1rem;
-}
+} */
 
 .ellipse {
   background-color: #f5f5f5;

@@ -42,7 +42,7 @@ class Schools extends React.Component {
       return <h3>No Schools found</h3>;
     } else {
       return (
-        <div className="schools-table">
+        <div>
           {this.state.schools.map((school) => <SchoolItem school={school} key={school._id} refreshSchools={this.refreshSchools} />)}
         </div>
       );
