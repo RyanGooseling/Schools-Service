@@ -56,13 +56,13 @@ class NewReview extends React.Component {
     const {stars, body} = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <input className="" type="text" name="stars" placeholder="How many stars?" onChange={this.handleChange} value={stars} />
+        <input type="text" name="stars" placeholder="How many stars?" onChange={this.handleChange} value={stars} />
         <br />
         <br />
-        <textarea className="" name="body" placeholder="Please type your review here..." onChange={this.handleChange} value={body}></textarea>
+        <textarea name="body" placeholder="Please type your review here..." onChange={this.handleChange} value={body} />
         <br />
         <br />
-        <button className="create-submit-button" type="submit">Submit Review</button>
+        <button type="submit">Submit Review</button>
       </form>
     );
   }

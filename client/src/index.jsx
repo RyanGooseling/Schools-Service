@@ -4,15 +4,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import styled from 'styled-components';
 import Schools from './components/Schools.jsx';
 
-const SchoolService = () => (
-  <Router>
-    <h2>Schools</h2>
-    <Route path="/homes/:id" component={Schools} />
-  </Router>
-);
+const Font = styled.div`
+  font-family: libreFranklin;
+  color: #333;
+`;
 
-// window.SchoolsService = SchoolService;
+const SchoolsHeader = styled.h2`
+  padding-left: 0;
+  width: 100%;
+  word-spacing: .125rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
+const SchoolService = () => (
+  <Font>
+    <Router>
+      <SchoolsHeader>Nearby Schools</SchoolsHeader>
+      <Route path="/homes/:id" component={Schools} />
+    </Router>
+  </Font>
+);
 
 ReactDOM.render(<SchoolService />, document.getElementById('schools'));

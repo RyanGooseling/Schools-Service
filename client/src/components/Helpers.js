@@ -16,9 +16,9 @@ export default {
     if (reviewsArr) {
       const reviewScoreSum = reviewsArr.reduce((acc, current) => acc + current.score, 0);
       const averageStarsNum = Math.round(reviewScoreSum / reviewsArr.length);
-      path = `./assets/${map[averageStarsNum]}Star.png`;
+      path = `http://localhost:3002/assets/${map[averageStarsNum]}Star.png`;
     } else {
-      path = `./assets/${map[score]}Star.png`;
+      path = `http://localhost:3002/assets/${map[score]}Star.png`;
     }
     return path;
   },

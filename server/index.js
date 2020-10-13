@@ -14,6 +14,7 @@ app.use(express.urlencoded());
 app.use('/homes/:id/', express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use('/homes', schoolsRouter);
 app.use('/bundle.js', express.static(path.join(__dirname, '..', 'client', 'dist', 'bundle.js')));
+app.use('/assets', express.static(path.join(__dirname, '..', 'client', 'dist', 'assets')));
 
 let server;
 

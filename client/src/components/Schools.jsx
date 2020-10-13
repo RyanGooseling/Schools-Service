@@ -42,7 +42,7 @@ class Schools extends React.Component {
       return <h3>No Schools found</h3>;
     } else {
       return (
-        <div className="schools-table">
+        <div>
           {this.state.schools.map((school) => <SchoolItem school={school} key={school._id} refreshSchools={this.refreshSchools} />)}
         </div>
       );
@@ -60,6 +60,3 @@ class Schools extends React.Component {
 // window.Schools = Schools;
 
 export default Schools;
-
-
-// make sure any api call in the service -> client should use absolute routes
