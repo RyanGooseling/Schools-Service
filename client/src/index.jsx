@@ -24,7 +24,7 @@ const SchoolsHeader = styled.h2`
 const SchoolService = () => (
   <Font>
     <Router>
-      <SchoolsHeader>Schools</SchoolsHeader>
+      <SchoolsHeader>Nearby Schools</SchoolsHeader>
       <Route path="/homes/:id" component={Schools} />
     </Router>
   </Font>

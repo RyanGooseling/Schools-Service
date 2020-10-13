@@ -92,6 +92,7 @@ const Students = styled.div`
 `;
 
 const RatingTd = styled.td`
+  margin-left: 50px;
   padding-right: 1rem;
 `;
 
@@ -104,6 +105,7 @@ const StarRatingImg = styled.img`
 `;
 
 const DistanceCol = styled.td`
+  margin-left: 25px
   width: 10em;
 `;
 
